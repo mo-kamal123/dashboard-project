@@ -5,6 +5,7 @@ function SideBar() {
   return (
     <div>
         <div className="sticky left-0 top-0">
+
       <aside className="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-gray-50 border-r rtl:border-r-0 rtl:border-l">
         <a href="#" className="text-2xl">
           Dashboard
@@ -38,6 +39,7 @@ function SideBar() {
             <a
             onClick={()=> setActive('home')}
               className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg ${active === 'home' ? "bg-violet-500 text-white" : ""}  hover:bg-violet-400  hover:text-white`}
+
               href="#"
             >
               <svg
@@ -61,6 +63,7 @@ function SideBar() {
             <a
             onClick={()=> setActive('custmors')}
               className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg ${active === 'custmors' ? "bg-violet-500 text-white" : ""}  hover:bg-violet-400  hover:text-white`}
+
               href="#"
             >
               <svg
@@ -84,6 +87,7 @@ function SideBar() {
             <a
             onClick={()=> setActive('products')}
               className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg ${active === 'products' ? "bg-violet-500 text-white" : ""}  hover:bg-violet-400  hover:text-white`}
+
               href="#"
             >
               <svg
@@ -107,6 +111,7 @@ function SideBar() {
             <a
             onClick={()=> setActive('inventory')}
               className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg ${active === 'inventory' ? "bg-violet-500 text-white" : ""}  hover:bg-violet-400  hover:text-white`}
+
               href="#"
             >
               <svg
@@ -130,6 +135,7 @@ function SideBar() {
             <a
             onClick={()=> setActive('invoices')}
               className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg ${active === 'invoices' ? "bg-violet-500 text-white" : ""}  hover:bg-violet-400  hover:text-white`}
+
               href="#"
             >
               <svg
@@ -158,6 +164,7 @@ function SideBar() {
             <a
             onClick={() => setActive('users')}
               className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg ${active === 'users' ? "bg-violet-500 text-white" : ""} hover:bg-violet-400  hover:text-white`}
+
               href="#"
             >
               <svg
@@ -181,6 +188,7 @@ function SideBar() {
             <a
             onClick={()=>setActive('setting')}
               className={`flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg ${active === 'setting' ? "bg-violet-500 text-white" : ""}  hover:bg-violet-400  hover:text-white`}
+
               href="#"
             >
               <svg
@@ -244,6 +252,7 @@ function SideBar() {
         </div>
       </aside>
       </div>
+
     </div>
   );
 }
