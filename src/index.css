@@ -1,1 +1,21 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+@layer utilities {
+  .transtions {
+    transition: all;
+    transition-duration: 0.3s;
+  }
+}
+
+@theme {
+  --font-display: 'Satoshi', 'sans-serif';
+  --breakpoint-3xl: 120rem;
+  --color-body: #f6f8f9;
+  --color-main: #191919;
+  --color-sec: #fdc500;
+  --color-dark: #0b0c0c;
+}
