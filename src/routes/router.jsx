@@ -1,11 +1,15 @@
 import { createBrowserRouter } from 'react-router';
-import Home from '../pages/home';
-import AuthLayout from '../componants/Layout/auth-layout';
+import Home from '../pages/dashboard';
+import AuthLayout from '../layouts/auth-layout';
 import Login from '../componants/auth/login';
 import ForgetPassword from '../componants/auth/forget-password';
-import RootLayout from '../componants/Layout/root-layout';
+import RootLayout from '../layouts/root-layout';
 import Verify from '../componants/auth/verify';
 import ResetPassword from '../componants/auth/reset-password';
+import Tables from '../pages/tables';
+import Billing from '../pages/billing';
+import Notification from '../pages/notification';
+import Dashboard from '../pages/dashboard';
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +27,11 @@ export const router = createBrowserRouter([
     // This is the root path for the main application
     path: '/',
     element: <RootLayout />,
-    children: [{ index: true, element: <Home /> }],
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: 'tables', element: <Tables /> },
+      { path: 'billing', element: <Billing /> },
+      { path: 'notifications', element: <Notification /> },
+    ],
   },
 ]);
