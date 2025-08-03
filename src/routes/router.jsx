@@ -7,9 +7,9 @@ import RootLayout from '../layouts/root-layout';
 import Verify from '../componants/auth/verify';
 import ResetPassword from '../componants/auth/reset-password';
 import Tables from '../pages/tables';
-import Billing from '../pages/billing';
 import Notification from '../pages/notification';
 import Dashboard from '../pages/dashboard';
+import Invoices from '../pages/invoices';
 
 export const router = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Dashboard /> },
       { path: 'tables', element: <Tables /> },
-      { path: 'billing', element: <Billing /> },
+      { path: 'invoices', element: <Invoices /> },
       { path: 'notifications', element: <Notification /> },
     ],
   },

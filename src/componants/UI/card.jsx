@@ -8,14 +8,16 @@ const Card = ({ title, value, desc, percent, icon }) => {
         </div>
         <div className="bg-main p-2 text-2xl text-white rounded-lg">{icon}</div>
       </div>
-      <div className="border-t-[1px] pt-2 border-sec text-gray-500">
-        <span
-          className={`${percent > 0 ? 'text-green-500' : 'text-red-500'} font-bold`}
-        >
-          {percent}%
-        </span>
-        {desc}
-      </div>
+      {percent && (
+        <div className="border-t-[1px] pt-2 border-sec text-gray-500">
+          <span
+            className={`${percent > 0 ? 'text-green-500' : 'text-red-500'} font-bold`}
+          >
+            {percent}%
+          </span>
+          {desc}
+        </div>
+      )}
     </div>
   );
 };
