@@ -1,10 +1,12 @@
+// Description: A simple table component to display product information in a structured format.
 const Table = () => {
+  // products data to be displayed in the table
   const products = [
-    { product: "Shirt", category: "Man clothes", price: "$100", stock: 500 },
-    { product: "T-Shirt", category: "Man clothes", price: "$50", stock: 300 },
-    { product: "Jeans", category: "Man clothes", price: "$80", stock: 200 },
-    { product: "Jacket", category: "Man clothes", price: "$150", stock: 100 },
-    { product: "hoody", category: "Man clothes", price: "$160", stock: 140 },
+    { product: 'Shirt', category: 'Man clothes', price: '$100', stock: 500 },
+    { product: 'T-Shirt', category: 'Man clothes', price: '$50', stock: 300 },
+    { product: 'Jeans', category: 'Man clothes', price: '$80', stock: 200 },
+    { product: 'Jacket', category: 'Man clothes', price: '$150', stock: 100 },
+    { product: 'hoody', category: 'Man clothes', price: '$160', stock: 140 },
   ];
 
   return (
@@ -18,6 +20,7 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
+        {/* Iterate over products and create a row for each product */}
         {products.map((item, index) => (
           <tr
             key={index}
