@@ -45,7 +45,10 @@ const Dashboard = () => {
     <div className="w-full mr-5">
       {/* Breadcrumbs for navigation */}
       <div className="mt-8">
-        <Breadcrumbs links={[{ title: 'dashboard', url: '/' }]} />
+        <Breadcrumbs
+          dashboard={true}
+          links={[{ title: 'Dashboard', url: '/' }]}
+        />
       </div>
       {/* Main title and description */}
       <div className="my-5">
@@ -67,16 +70,24 @@ const Dashboard = () => {
           />
         ))}
       </div>
-      <div className='grid grid-cols-2 gap-5'>
-        <StatisticCard title={'Website Views'} desc={'Last Campaign Performance'} time={'campaign sent 2 days ago'}>
+      <div className="grid grid-cols-2 gap-5">
+        <StatisticCard
+          title={'Website Views'}
+          desc={'Last Campaign Performance'}
+          time={'campaign sent 2 days ago'}
+        >
           <BarChart />
         </StatisticCard>
-        <StatisticCard title={'Daily Sales'} desc={'Last Campaign Performance'} time={'updated 4 min ago'}>
+        <StatisticCard
+          title={'Daily Sales'}
+          desc={'Last Campaign Performance'}
+          time={'updated 4 min ago'}
+        >
           <LineChart />
         </StatisticCard>
       </div>
-      <div className='bg-white p-5 border border-sec rounded-xl'>
-        <h2 className='text-2xl mb-3'>Top selling products</h2>
+      <div className="bg-white p-5 border border-sec rounded-xl">
+        <h2 className="text-2xl mb-3">Top selling products</h2>
         <Table />
       </div>
     </div>

@@ -1,7 +1,7 @@
-import React from 'react';
-
+// data for the line chart
 const data = [10, 40, 30, 60, 40, 60, 80];
 
+// This component renders a simple line chart using SVG
 const LineChart = () => {
   const maxValue = Math.max(...data);
   const width = 420;
@@ -15,7 +15,11 @@ const LineChart = () => {
     .join(' ');
 
   return (
-    <svg width={width} height={height} style={{ border: '1px solid #ccc', margin: '30px 0' }}>
+    <svg
+      width={width}
+      height={height}
+      style={{ border: '1px solid #ccc', margin: '30px 0' }}
+    >
       <polyline fill="none" stroke="#4f46e5" strokeWidth="2" points={points} />
     </svg>
   );

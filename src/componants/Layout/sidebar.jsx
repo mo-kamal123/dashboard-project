@@ -1,13 +1,14 @@
 import { RiBillLine, RiDashboardHorizontalFill } from 'react-icons/ri';
-import Btn from '../UI/Btn';
+import { TbTableShortcut } from 'react-icons/tb';
 import { NavLink } from 'react-router';
 import {
   MdOutlineCircleNotifications,
   MdOutlineSpaceDashboard,
 } from 'react-icons/md';
-import { TbTableShortcut } from 'react-icons/tb';
 
+// This component renders a sidebar with navigation links for the dashboard, tables, billing, and notifications.
 const Sidebar = () => {
+  // Array of navigation links with titles, URLs, and icons
   const navUrl = [
     { title: 'dashboard', url: '/', icon: <MdOutlineSpaceDashboard /> },
     { title: 'tables', url: '/tables', icon: <TbTableShortcut /> },
@@ -27,6 +28,7 @@ const Sidebar = () => {
         Dashboard
       </div>
       <div className="w-[90%] m-auto">
+        {/* Render navigation links using NavLink for active state styling */}
         {navUrl.map((nav) => (
           <NavLink
             to={`${nav.url}`}
