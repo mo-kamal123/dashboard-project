@@ -7,40 +7,49 @@ import StatisticCard from '../componants/UI/statistic-card';
 import LineChart from '../componants/UI/line-chart';
 import Table from '../componants/UI/table';
 
+// This data is used to populate the cards on the dashboard
+const cardData = [
+  {
+    title: "Today's Money",
+    value: '$53k',
+    icon: <FaRegMoneyBill1 />,
+    percent: +55,
+    desc: ' than last week',
+  },
+  {
+    title: "Today's Users",
+    value: '2300',
+    icon: <FaUsers />,
+    percent: +3,
+    desc: ' than last month',
+  },
+  {
+    title: 'Ads Views',
+    value: '3,462',
+    icon: <FaEye />,
+    percent: -2,
+    desc: ' than yesterday',
+  },
+  {
+    title: 'Sales',
+    value: '$103,430',
+    icon: <FaShoppingCart />,
+    percent: +5,
+    desc: ' than yesterday',
+  },
+];
+// products data to be displayed in the table
+const products = [
+  { product: 'Shirt', category: 'Man clothes', price: '$100', stock: 500 },
+  { product: 'T-Shirt', category: 'Man clothes', price: '$50', stock: 300 },
+  { product: 'Jeans', category: 'Man clothes', price: '$80', stock: 200 },
+  { product: 'Jacket', category: 'Man clothes', price: '$150', stock: 100 },
+  { product: 'hoody', category: 'Man clothes', price: '$160', stock: 140 },
+];
+const headers = ['Product', 'Category', 'Price', 'Stock'];
+
 // This is the main dashboard page that displays various statistics and metrics
 const Dashboard = () => {
-  // This data is used to populate the cards on the dashboard
-  const cardData = [
-    {
-      title: "Today's Money",
-      value: '$53k',
-      icon: <FaRegMoneyBill1 />,
-      percent: +55,
-      desc: ' than last week',
-    },
-    {
-      title: "Today's Users",
-      value: '2300',
-      icon: <FaUsers />,
-      percent: +3,
-      desc: ' than last month',
-    },
-    {
-      title: 'Ads Views',
-      value: '3,462',
-      icon: <FaEye />,
-      percent: -2,
-      desc: ' than yesterday',
-    },
-    {
-      title: 'Sales',
-      value: '$103,430',
-      icon: <FaShoppingCart />,
-      percent: +5,
-      desc: ' than yesterday',
-    },
-  ];
-
   return (
     <div className="w-full mr-5">
       {/* Breadcrumbs for navigation */}
@@ -70,6 +79,7 @@ const Dashboard = () => {
           />
         ))}
       </div>
+      {/* Statistic cards with charts */}
       <div className="grid grid-cols-2 gap-5">
         <StatisticCard
           title={'Website Views'}
@@ -86,9 +96,23 @@ const Dashboard = () => {
           <LineChart />
         </StatisticCard>
       </div>
+      {/* Top selling products table */}
       <div className="bg-white p-5 border border-sec rounded-xl">
         <h2 className="text-2xl mb-3">Top selling products</h2>
-        <Table />
+        <Table tableHeaders={headers}>
+          {/* Iterate over products and create a row for each product */}
+          {products.map((item, index) => (
+            <tr
+              key={index}
+              className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
+            >
+              <td className="p-3">{item.product}</td>
+              <td className="p-3">{item.category}</td>
+              <td className="p-3">{item.price}</td>
+              <td className="p-3">{item.stock}</td>
+            </tr>
+          ))}
+        </Table>{' '}
       </div>
     </div>
   );

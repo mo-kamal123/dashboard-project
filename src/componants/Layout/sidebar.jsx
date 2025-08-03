@@ -10,11 +10,11 @@ import {
 const Sidebar = () => {
   // Array of navigation links with titles, URLs, and icons
   const navUrl = [
-    { title: 'dashboard', url: '/', icon: <MdOutlineSpaceDashboard /> },
-    { title: 'tables', url: '/tables', icon: <TbTableShortcut /> },
-    { title: 'billing', url: '/billing', icon: <RiBillLine /> },
+    { title: 'Dashboard', url: '/', icon: <MdOutlineSpaceDashboard /> },
+    { title: 'Tables', url: '/tables', icon: <TbTableShortcut /> },
+    { title: 'Invoices', url: '/invoices', icon: <RiBillLine /> },
     {
-      title: 'notifications',
+      title: 'Notifications',
       url: '/notifications',
       icon: <MdOutlineCircleNotifications />,
     },
