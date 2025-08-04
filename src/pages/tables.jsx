@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router';
 import Breadcrumbs from '../componants/Layout/Breadcrumbs';
 import Table from '../componants/UI/table';
+import Modal from '../componants/UI/modal';
 
 // products data to be displayed in the table
 const products = [
@@ -13,6 +15,7 @@ const headers = ['Product', 'Category', 'Price', 'Stock'];
 
 // this is the main tables page that displays various tables
 const Tables = () => {
+  const navigate = useNavigate();
   return (
     <div>
       {/* Breadcrumbs for navigation */}
@@ -28,6 +31,7 @@ const Tables = () => {
           {/* Iterate over products and create a row for each product */}
           {products.map((item, index) => (
             <tr
+              onClick={() => navigate(`${item.product}`)}
               key={index}
               className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
             >
@@ -37,6 +41,7 @@ const Tables = () => {
               <td className="p-3">{item.stock}</td>
             </tr>
           ))}
+          <Modal data={products} path={'/tables'} />
         </Table>{' '}
       </div>
       {/* products table */}
@@ -48,6 +53,7 @@ const Tables = () => {
           {/* Iterate over products and create a row for each product */}
           {products.map((item, index) => (
             <tr
+              onClick={() => navigate(`${item.product}`)}
               key={index}
               className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
             >
@@ -57,6 +63,7 @@ const Tables = () => {
               <td className="p-3">{item.stock}</td>
             </tr>
           ))}
+          <Modal data={products} path={'/tables'} />
         </Table>
       </div>
     </div>
