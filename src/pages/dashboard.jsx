@@ -6,6 +6,8 @@ import BarChart from '../componants/UI/bar-chart';
 import StatisticCard from '../componants/UI/statistic-card';
 import LineChart from '../componants/UI/line-chart';
 import Table from '../componants/UI/table';
+import { useNavigate } from 'react-router';
+import Modal from '../componants/UI/modal';
 
 // This data is used to populate the cards on the dashboard
 const cardData = [
@@ -40,16 +42,53 @@ const cardData = [
 ];
 // products data to be displayed in the table
 const products = [
-  { product: 'Shirt', category: 'Man clothes', price: '$100', stock: 500 },
-  { product: 'T-Shirt', category: 'Man clothes', price: '$50', stock: 300 },
-  { product: 'Jeans', category: 'Man clothes', price: '$80', stock: 200 },
-  { product: 'Jacket', category: 'Man clothes', price: '$150', stock: 100 },
-  { product: 'hoody', category: 'Man clothes', price: '$160', stock: 140 },
+  {
+    product: 'Shirt',
+    category: 'Man clothes',
+    price: '$100',
+    stock: 500,
+    description:
+      'Classic formal shirt made from premium cotton, perfect for office and casual wear.',
+  },
+  {
+    product: 'T-Shirt',
+    category: 'Man clothes',
+    price: '$50',
+    stock: 300,
+    description:
+      'Comfortable cotton T-shirt with a modern fit, suitable for everyday use.',
+  },
+  {
+    product: 'Jeans',
+    category: 'Man clothes',
+    price: '$80',
+    stock: 200,
+    description:
+      'Slim-fit denim jeans with a stylish design, durable and versatile for any occasion.',
+  },
+  {
+    product: 'Jacket',
+    category: 'Man clothes',
+    price: '$150',
+    stock: 100,
+    description:
+      'Warm and stylish jacket made from high-quality fabric, ideal for cold weather.',
+  },
+  {
+    product: 'Hoody',
+    category: 'Man clothes',
+    price: '$160',
+    stock: 140,
+    description:
+      'Cozy and trendy hoodie with soft inner lining for maximum comfort and warmth.',
+  },
 ];
+
 const headers = ['Product', 'Category', 'Price', 'Stock'];
 
 // This is the main dashboard page that displays various statistics and metrics
 const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full mr-5">
       {/* Breadcrumbs for navigation */}
@@ -103,6 +142,7 @@ const Dashboard = () => {
           {/* Iterate over products and create a row for each product */}
           {products.map((item, index) => (
             <tr
+              onClick={() => navigate(`${item.product}`)}
               key={index}
               className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
             >
@@ -112,6 +152,7 @@ const Dashboard = () => {
               <td className="p-3">{item.stock}</td>
             </tr>
           ))}
+          <Modal data={products} path={'/'} />
         </Table>{' '}
       </div>
     </div>

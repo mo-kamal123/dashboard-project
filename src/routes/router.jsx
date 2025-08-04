@@ -29,7 +29,9 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <Dashboard /> },
+      { path: ':product', element: <Dashboard /> },
       { path: 'tables', element: <Tables /> },
+      { path: 'tables/:product', element: <Tables /> },
       { path: 'invoices', element: <Invoices /> },
       { path: 'notifications', element: <Notification /> },
     ],
