@@ -10,6 +10,7 @@ import Tables from '../pages/tables';
 import Notification from '../pages/notification';
 import Dashboard from '../pages/dashboard';
 import Invoices from '../pages/invoices';
+import Profile from '../pages/profile';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
       { path: 'tables/:product', element: <Tables /> },
       { path: 'invoices', element: <Invoices /> },
       { path: 'notifications', element: <Notification /> },
+      { path: 'profile', element: <Profile /> },
     ],
   },
 ]);
