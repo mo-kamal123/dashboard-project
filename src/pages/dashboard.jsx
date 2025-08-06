@@ -90,23 +90,28 @@ const headers = ['Product', 'Category', 'Price', 'Stock'];
 const Dashboard = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full mr-5">
+    <section className="w-full mr-5">
       {/* Breadcrumbs for navigation */}
-      <div className="mt-8">
+      <nav aria-label="Breadcrumb" className="mt-8">
         <Breadcrumbs
           dashboard={true}
           links={[{ title: 'Dashboard', url: '/' }]}
         />
-      </div>
+      </nav>
+
       {/* Main title and description */}
-      <div className="my-5">
+      <header className="my-5">
         <h1 className="text-2xl font-black">Dashboard</h1>
         <p className="text-gray-500">
           Check the sales, value and bounce rate by country.
         </p>
-      </div>
+      </header>
+
       {/* Card components displaying various statistics */}
-      <div className="grid grid-cols-4 gap-5 w-full mt-5">
+      <section
+        aria-label="Statistics Overview"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full mt-5"
+      >
         {cardData.map((card, index) => (
           <Card
             key={index}
@@ -117,9 +122,13 @@ const Dashboard = () => {
             desc={card.desc}
           />
         ))}
-      </div>
+      </section>
+
       {/* Statistic cards with charts */}
-      <div className="grid grid-cols-2 gap-5">
+      <section
+        aria-label="Charts Section"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-6"
+      >
         <StatisticCard
           title={'Website Views'}
           desc={'Last Campaign Performance'}
@@ -134,9 +143,13 @@ const Dashboard = () => {
         >
           <LineChart />
         </StatisticCard>
-      </div>
+      </section>
+
       {/* Top selling products table */}
-      <div className="bg-white p-5 border border-sec rounded-xl">
+      <section
+        aria-label="Top Selling Products"
+        className="bg-white p-5 border border-sec rounded-xl mt-6"
+      >
         <h2 className="text-2xl mb-3">Top selling products</h2>
         <Table tableHeaders={headers}>
           {/* Iterate over products and create a row for each product */}
@@ -153,9 +166,9 @@ const Dashboard = () => {
             </tr>
           ))}
           <Modal data={products} path={'/'} />
-        </Table>{' '}
-      </div>
-    </div>
+        </Table>
+      </section>
+    </section>
   );
 };
 

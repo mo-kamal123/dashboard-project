@@ -84,16 +84,20 @@ const headers = [
 // This component renders the Invoices page, which includes a list of invoices and various statistics
 const Invoices = () => {
   return (
-    <div>
+    <section className="w-full">
       {/* Breadcrumbs for navigation */}
-      <div className="mt-8">
+      <nav aria-label="Breadcrumb" className="mt-8">
         <Breadcrumbs
           dashboard={true}
           links={[{ title: 'Invoices', url: '/' }]}
         />
-      </div>
+      </nav>
+
       {/* Card components displaying various statistics */}
-      <div className="grid grid-cols-4 gap-5 w-full mt-5">
+      <section
+        aria-label="Invoice Statistics"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full mt-5"
+      >
         {cardData.map((card, index) => (
           <Card
             key={index}
@@ -104,13 +108,16 @@ const Invoices = () => {
             desc={card.desc}
           />
         ))}
-      </div>
+      </section>
+
       {/* Invoices table section */}
-      <div className="bg-white p-5 mt-10 border border-sec rounded-xl">
+      <section
+        aria-label="Invoices Table"
+        className="bg-white p-5 mt-10 border border-sec rounded-xl"
+      >
         <h2 className="text-2xl mb-3">Invoices</h2>
         {/* Render the invoices table with headers and data */}
         <Table tableHeaders={headers}>
-          {/* Iterate over invoices and create a row for each invoice */}
           {invoicesData.map((invoice, index) => (
             <tr
               key={index}
@@ -131,8 +138,8 @@ const Invoices = () => {
             </tr>
           ))}
         </Table>
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 

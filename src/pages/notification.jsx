@@ -40,9 +40,10 @@ const Notification = () => {
 
   return (
     <section className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
-      <header className="flex justify-between items-center mb-6">
+      {/* Page Header */}
+      <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold flex items-center gap-2">
-          <MdOutlineCircleNotifications className="w-6 h-6 text-main" />{' '}
+          <MdOutlineCircleNotifications className="w-6 h-6 text-main" />
           Notifications
         </h1>
         <button
@@ -53,15 +54,16 @@ const Notification = () => {
         </button>
       </header>
 
-      <div className="space-y-4">
-        {/* // Render each notification as an article */}
+      {/* Notifications List */}
+      <section aria-label="Notifications List" className="space-y-4">
         {notifications.map((notif) => (
           <article
             key={notif.id}
-            className={`flex items-start gap-4 p-4 rounded-lg shadow-md hover:shadow-lg transition ${
+            className={`flex flex-col sm:flex-row sm:items-start gap-4 p-4 rounded-lg shadow-md hover:shadow-lg transition ${
               notif.read ? 'bg-white' : 'bg-blue-50'
             }`}
           >
+            {/* Notification Icon */}
             <div>
               <MdOutlineSpaceDashboard
                 className={`w-6 h-6 ${
@@ -69,6 +71,7 @@ const Notification = () => {
                 }`}
               />
             </div>
+            {/* Notification Content */}
             <div className="flex-1">
               <h2 className="font-semibold">{notif.title}</h2>
               <p className="text-gray-600 text-sm">{notif.message}</p>
@@ -76,7 +79,7 @@ const Notification = () => {
             </div>
           </article>
         ))}
-      </div>
+      </section>
     </section>
   );
 };

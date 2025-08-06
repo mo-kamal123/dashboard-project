@@ -17,40 +17,21 @@ const headers = ['Product', 'Category', 'Price', 'Stock'];
 const Tables = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <section className="w-full">
       {/* Breadcrumbs for navigation */}
-      <div className="mt-8">
+      <nav aria-label="Breadcrumb" className="mt-8">
         <Breadcrumbs links={[{ title: 'Tables', url: '/tables' }]} />
-      </div>
-      {/* products table */}
-      <div className="bg-white">
-        <div className="bg-main py-5 px-3 rounded-t-2xl mt-5 text-center">
-          <p className="text-2xl text-white">Products Table</p>
-        </div>
+      </nav>
+
+      {/* Products Table 1 */}
+      <section
+        aria-label="Products Table"
+        className="bg-white rounded-2xl overflow-hidden mt-5"
+      >
+        <header className="bg-main py-5 px-3 text-center">
+          <h2 className="text-2xl text-white font-semibold">Products Table</h2>
+        </header>
         <Table tableHeaders={headers}>
-          {/* Iterate over products and create a row for each product */}
-          {products.map((item, index) => (
-            <tr
-              onClick={() => navigate(`${item.product}`)}
-              key={index}
-              className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
-            >
-              <td className="p-3">{item.product}</td>
-              <td className="p-3">{item.category}</td>
-              <td className="p-3">{item.price}</td>
-              <td className="p-3">{item.stock}</td>
-            </tr>
-          ))}
-          <Modal data={products} path={'/tables'} />
-        </Table>{' '}
-      </div>
-      {/* products table */}
-      <div className="bg-white">
-        <div className="bg-main py-5 px-3 rounded-t-2xl mt-5 text-center">
-          <p className="text-2xl text-white">Products Table</p>
-        </div>
-        <Table tableHeaders={headers}>
-          {/* Iterate over products and create a row for each product */}
           {products.map((item, index) => (
             <tr
               onClick={() => navigate(`${item.product}`)}
@@ -65,8 +46,33 @@ const Tables = () => {
           ))}
           <Modal data={products} path={'/tables'} />
         </Table>
-      </div>
-    </div>
+      </section>
+
+      {/* Products Table 2 */}
+      <section
+        aria-label="Products Table"
+        className="bg-white rounded-2xl overflow-hidden mt-5"
+      >
+        <header className="bg-main py-5 px-3 text-center">
+          <h2 className="text-2xl text-white font-semibold">Products Table</h2>
+        </header>
+        <Table tableHeaders={headers}>
+          {products.map((item, index) => (
+            <tr
+              onClick={() => navigate(`${item.product}`)}
+              key={index}
+              className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
+            >
+              <td className="p-3">{item.product}</td>
+              <td className="p-3">{item.category}</td>
+              <td className="p-3">{item.price}</td>
+              <td className="p-3">{item.stock}</td>
+            </tr>
+          ))}
+          <Modal data={products} path={'/tables'} />
+        </Table>
+      </section>
+    </section>
   );
 };
 

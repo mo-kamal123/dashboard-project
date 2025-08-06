@@ -7,13 +7,11 @@ const RootLayout = () => {
 
   return isAuthenticated ? (
     <div className="flex bg-body min-h-screen">
-      {/* Sidebar - Fixed */}
-      <div className="fixed top-0 left-0 h-screen w-64 bg-white shadow-lg">
-        <Sidebar />
-      </div>
+      {/* Sidebar */}
+      <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-1 ml-64 p-5">
+      <div className="flex-1 p-5 lg:ml-[240px] transition-all duration-300">
         <Outlet />
       </div>
     </div>

@@ -17,9 +17,9 @@ const Profile = () => {
   const [user] = useState(userData);
 
   return (
-    <section className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
-      {/* Header */}
-      <header className="flex justify-between items-center mb-6">
+    <main className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
+      {/* Page Header */}
+      <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Profile</h1>
         <button className="bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition">
           Edit Profile
@@ -27,10 +27,13 @@ const Profile = () => {
       </header>
 
       {/* Profile Card */}
-      <article className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center mb-8">
+      <section
+        aria-label="Profile Summary"
+        className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center mb-8"
+      >
         <img
           src={user.avatar}
-          alt={user.name}
+          alt={`${user.name} avatar`}
           className="w-24 h-24 rounded-full bg-center mb-4 border-4 border-blue-100"
         />
         <h2 className="text-xl font-semibold">{user.name}</h2>
@@ -38,10 +41,13 @@ const Profile = () => {
         <span className="inline-block mt-2 px-3 py-1 text-sm bg-blue-50 text-blue-700 rounded-full">
           {user.role}
         </span>
-      </article>
+      </section>
 
       {/* Details Section */}
-      <article className="bg-white rounded-xl shadow-md p-6">
+      <section
+        aria-label="Account Details"
+        className="bg-white rounded-xl shadow-md p-6"
+      >
         <h3 className="text-lg font-semibold mb-4">Account Details</h3>
         <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-700">
           <div>
@@ -57,8 +63,8 @@ const Profile = () => {
             <dd>{user.joined}</dd>
           </div>
         </dl>
-      </article>
-    </section>
+      </section>
+    </main>
   );
 };
 
