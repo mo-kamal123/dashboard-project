@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router';
 import Home from '../pages/dashboard';
 import AuthLayout from '../layouts/auth-layout';
-import Login from '../componants/auth/login';
-import ForgetPassword from '../componants/auth/forget-password';
+import Login from '../components/auth/login';
+import ForgetPassword from '../components/auth/forget-password';
 import RootLayout from '../layouts/root-layout';
-import Verify from '../componants/auth/verify';
-import ResetPassword from '../componants/auth/reset-password';
+import Verify from '../components/auth/verify';
+import ResetPassword from '../components/auth/reset-password';
 import Tables from '../pages/tables';
 import Notification from '../pages/notification';
 import Dashboard from '../pages/dashboard';

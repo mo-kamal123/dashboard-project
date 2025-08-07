@@ -4,7 +4,6 @@ import {
   MdOutlineSpaceDashboard,
   MdOutlineCircleNotifications,
 } from 'react-icons/md';
-import { TbTableShortcut } from 'react-icons/tb';
 import { RiBillLine, RiDashboardHorizontalFill } from 'react-icons/ri';
 import { CgProfile } from 'react-icons/cg';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';

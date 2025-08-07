@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router';
-import Sidebar from '../componants/Layout/sidebar';
+import Sidebar from '../components/Layout/sidebar';
 
 const RootLayout = () => {
   const isAuthenticated = useSelector((state) => state.login.logged);

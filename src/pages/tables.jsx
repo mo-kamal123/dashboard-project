@@ -1,6 +1,6 @@
-import Breadcrumbs from '../componants/Layout/Breadcrumbs';
-import Table from '../componants/UI/table';
-import Modal from '../componants/UI/modal';
+import Breadcrumbs from '../components/Layout/Breadcrumbs';
+import Table from '../components/UI/table';
+import Modal from '../components/UI/modal';
 import useSearch from '../hooks/useSearch';
 import { useState } from 'react';
 

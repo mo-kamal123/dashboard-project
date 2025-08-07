@@ -1,11 +1,11 @@
 import { FaEye, FaRegMoneyBill1, FaUsers } from 'react-icons/fa6';
-import Breadcrumbs from '../componants/Layout/Breadcrumbs';
-import Card from '../componants/UI/card';
+import Breadcrumbs from '../components/Layout/Breadcrumbs';
+import Card from '../components/UI/card';
 import { FaShoppingCart } from 'react-icons/fa';
-import BarChart from '../componants/UI/bar-chart';
-import StatisticCard from '../componants/UI/statistic-card';
-import LineChart from '../componants/UI/line-chart';
-import Table from '../componants/UI/table';
+import BarChart from '../components/UI/bar-chart';
+import StatisticCard from '../components/UI/statistic-card';
+import LineChart from '../components/UI/line-chart';
+import Table from '../components/UI/table';
 
 // This data is used to populate the cards on the dashboard
 const cardData = [

@@ -1,7 +1,7 @@
 import { MdDeleteForever } from 'react-icons/md';
-import Breadcrumbs from '../componants/Layout/Breadcrumbs';
-import Modal from '../componants/UI/modal';
-import Table from '../componants/UI/table';
+import Breadcrumbs from '../components/Layout/Breadcrumbs';
+import Modal from '../components/UI/modal';
+import Table from '../components/UI/table';
 import { FiEdit3 } from 'react-icons/fi';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
