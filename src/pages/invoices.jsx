@@ -1,7 +1,7 @@
 import Card from '../components/UI/card';
 import { FaDownload, FaEye, FaRegMoneyBill1, FaUsers } from 'react-icons/fa6';
 import { FaShoppingCart } from 'react-icons/fa';
-import Breadcrumbs from '../components/Layout/Breadcrumbs';
+import Breadcrumbs from '../components/Layout/breadcrumbs';
 import Table from '../components/UI/table';
 
 // cardData contains the data for the cards displayed on the invoices page

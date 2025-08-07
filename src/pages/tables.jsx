@@ -1,4 +1,4 @@
-import Breadcrumbs from '../components/Layout/Breadcrumbs';
+import Breadcrumbs from '../components/Layout/breadcrumbs';
 import Table from '../components/UI/table';
 import Modal from '../components/UI/modal';
 import useSearch from '../hooks/useSearch';

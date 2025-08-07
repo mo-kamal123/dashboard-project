@@ -1,5 +1,5 @@
 import { FaEye, FaRegMoneyBill1, FaUsers } from 'react-icons/fa6';
-import Breadcrumbs from '../components/Layout/Breadcrumbs';
+import Breadcrumbs from '../components/Layout/breadcrumbs';
 import Card from '../components/UI/card';
 import { FaShoppingCart } from 'react-icons/fa';
 import BarChart from '../components/UI/bar-chart';

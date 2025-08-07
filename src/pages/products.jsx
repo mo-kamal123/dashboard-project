@@ -1,5 +1,5 @@
 import { MdDeleteForever } from 'react-icons/md';
-import Breadcrumbs from '../components/Layout/Breadcrumbs';
+import Breadcrumbs from '../components/Layout/breadcrumbs';
 import Modal from '../components/UI/modal';
 import Table from '../components/UI/table';
 import { FiEdit3 } from 'react-icons/fi';
