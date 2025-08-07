@@ -44,7 +44,7 @@ const Tables = () => {
               <td className="p-3">{item.stock}</td>
             </tr>
           ))}
-          <Modal data={products} path={'/tables'} />
+          <Modal data={products} path={'/tables'} type={'table'}   />
         </Table>
       </section>
 
@@ -69,7 +69,7 @@ const Tables = () => {
               <td className="p-3">{item.stock}</td>
             </tr>
           ))}
-          <Modal data={products} path={'/tables'} />
+          <Modal data={products} path={'/tables'} type={'table'} />
         </Table>
       </section>
     </section>
