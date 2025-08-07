@@ -1,5 +1,5 @@
 import Card from '../componants/UI/card';
-import { FaEye, FaRegMoneyBill1, FaUsers } from 'react-icons/fa6';
+import { FaDownload, FaEye, FaRegMoneyBill1, FaUsers } from 'react-icons/fa6';
 import { FaShoppingCart } from 'react-icons/fa';
 import Breadcrumbs from '../componants/Layout/Breadcrumbs';
 import Table from '../componants/UI/table';
@@ -131,8 +131,8 @@ const Invoices = () => {
               <td className="p-3">{invoice.paymentMethod}</td>
               <td className="p-3">{invoice.amount}</td>
               <td className="p-3">
-                <button className="bg-main text-white p-1 rounded-lg">
-                  Download
+                <button className="bg-main text-white p-2 rounded-lg">
+                <FaDownload />
                 </button>
               </td>
             </tr>
