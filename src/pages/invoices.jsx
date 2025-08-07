@@ -132,7 +132,7 @@ const Invoices = () => {
               <td className="p-3">{invoice.amount}</td>
               <td className="p-3">
                 <button className="bg-main text-white p-2 rounded-lg">
-                <FaDownload />
+                  <FaDownload />
                 </button>
               </td>
             </tr>

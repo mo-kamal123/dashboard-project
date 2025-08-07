@@ -17,7 +17,6 @@ Deployed with **Vercel**
 
 project-root/
 
-
 ├── node_modules/
 
 ├── public/
@@ -71,6 +70,7 @@ project-root/
 ## ✨ Features
 
 ### ✅ Authentication (Frontend Logic Only)
+
 - Login
 - Forget Password
 - Verify Code
@@ -78,18 +78,20 @@ project-root/
 - Protected Routes using `React Router`
 
 ### ✅ Dashboard UI
+
 - Sidebar Layout
 - Pages: Home / Tables / Notifications
 - Clean and responsive design
 
 ### ✅ Table Features
+
 - **Filtering by name or any column**
 - Modal popup for row actions (edit/view)
 - Status tags (In Stock / Out of Stock)
 - Responsive and styled with Tailwind
 
-
 ### ✅ Code Quality
+
 - ESLint for consistent coding standards
 - Prettier for auto-formatting
 - Modular folder structure
@@ -116,16 +118,19 @@ cd dashmart
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
 
 3. **Start the development server**
+
 ```bash
 npm run dev
 ```
 
 4. **Build for production**
+
 ```bash
 npm run build
 ```

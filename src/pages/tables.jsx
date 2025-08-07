@@ -44,11 +44,11 @@ const ordersHeaders = ['Order ID', 'Customer', 'Total', 'Status'];
 const Tables = () => {
   const [search, setSearch] = useState('');
   const [searchOrders, setSearchOrders] = useState('');
-  
+
   // Get filtered products
   const searchResult = useSearch(products, search);
   const filteredProducts = searchResult?.filteredProducts || products;
-  
+
   // Get filtered orders (if you want to add search to orders table too)
   const ordersSearchResult = useSearch(orders, searchOrders, 'order'); // Pass field type for orders
   const filteredOrders = ordersSearchResult?.filteredProducts || orders;
@@ -80,13 +80,13 @@ const Tables = () => {
           <h2 className="text-2xl text-white font-semibold">
             Top Products Table ({filteredProducts.length})
           </h2>
-          <input 
-            onChange={handleSearch} 
-            type="text" 
-            name="search" 
-            id="search" 
-            className='bg-white py-1 px-3 rounded' 
-            placeholder='Search products...'
+          <input
+            onChange={handleSearch}
+            type="text"
+            name="search"
+            id="search"
+            className="bg-white py-1 px-3 rounded"
+            placeholder="Search products..."
             value={search}
           />
         </header>
@@ -105,7 +105,10 @@ const Tables = () => {
             ))
           ) : (
             <tr>
-              <td colSpan={productsHeaders.length} className="p-3 text-center text-gray-500">
+              <td
+                colSpan={productsHeaders.length}
+                className="p-3 text-center text-gray-500"
+              >
                 No products found matching "{search}"
               </td>
             </tr>
@@ -122,13 +125,13 @@ const Tables = () => {
           <h2 className="text-2xl text-white font-semibold">
             Recent Orders Table ({filteredOrders.length})
           </h2>
-          <input 
-            onChange={handleOrdersSearch} 
-            type="text" 
-            name="searchOrders" 
-            id="searchOrders" 
-            className='bg-white py-1 px-3 rounded' 
-            placeholder='Search orders...'
+          <input
+            onChange={handleOrdersSearch}
+            type="text"
+            name="searchOrders"
+            id="searchOrders"
+            className="bg-white py-1 px-3 rounded"
+            placeholder="Search orders..."
             value={searchOrders}
           />
         </header>
@@ -163,7 +166,10 @@ const Tables = () => {
             ))
           ) : (
             <tr>
-              <td colSpan={ordersHeaders.length} className="p-3 text-center text-gray-500">
+              <td
+                colSpan={ordersHeaders.length}
+                className="p-3 text-center text-gray-500"
+              >
                 No orders found matching "{searchOrders}"
               </td>
             </tr>
