@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Modal from '../componants/UI/modal';
 import { Link, useNavigate } from 'react-router';
 import { clearUser } from '../store/user/user-slice';
 import { logout } from '../store/auth/login-slice';
@@ -25,7 +23,7 @@ const Profile = () => {
       <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Profile</h1>
         {/* // Edit and Logout Buttons */}
-        <div className='flex gap-5'>
+        <div className="flex gap-5">
           <Link
             to={'/profile/edit-profile'}
             className="bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition"

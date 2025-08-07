@@ -8,13 +8,15 @@ import { TbTableShortcut } from 'react-icons/tb';
 import { RiBillLine, RiDashboardHorizontalFill } from 'react-icons/ri';
 import { CgProfile } from 'react-icons/cg';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { FaCartArrowDown, FaTableCells } from 'react-icons/fa6';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navUrl = [
     { title: 'Dashboard', url: '/', icon: <MdOutlineSpaceDashboard /> },
-    { title: 'Tables', url: '/tables', icon: <TbTableShortcut /> },
+    { title: 'Tables', url: '/tables', icon: <FaTableCells /> },
+    { title: 'Products', url: '/products', icon: <FaCartArrowDown /> },
     { title: 'Invoices', url: '/invoices', icon: <RiBillLine /> },
     {
       title: 'Notifications',
@@ -37,7 +39,7 @@ const Sidebar = () => {
       <aside
         className={`fixed top-0 left-0 h-full w-[240px] bg-white border-r border-sec rounded-r-2xl shadow-md transform z-10 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 ease-in-out lg:translate-x-0 lg:h-[calc(100vh-1rem)] lg:m-2`}
+        } transition-transform duration-300 ease-in-out lg:translate-x-0 lg:h-[calc(100vh-1rem)] lg:my-2`}
         aria-label="Sidebar Navigation"
       >
         {/* Logo / Main Link */}

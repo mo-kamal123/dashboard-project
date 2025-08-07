@@ -6,8 +6,6 @@ import BarChart from '../componants/UI/bar-chart';
 import StatisticCard from '../componants/UI/statistic-card';
 import LineChart from '../componants/UI/line-chart';
 import Table from '../componants/UI/table';
-import { useNavigate } from 'react-router';
-import Modal from '../componants/UI/modal';
 
 // This data is used to populate the cards on the dashboard
 const cardData = [
@@ -88,7 +86,6 @@ const headers = ['Product', 'Category', 'Price', 'Stock'];
 
 // This is the main dashboard page that displays various statistics and metrics
 const Dashboard = () => {
-  const navigate = useNavigate();
   return (
     <section className="w-full mr-5">
       {/* Breadcrumbs for navigation */}
@@ -155,7 +152,6 @@ const Dashboard = () => {
           {/* Iterate over products and create a row for each product */}
           {products.map((item, index) => (
             <tr
-              onClick={() => navigate(`${item.product}`)}
               key={index}
               className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
             >
@@ -165,7 +161,6 @@ const Dashboard = () => {
               <td className="p-3">{item.stock}</td>
             </tr>
           ))}
-          <Modal data={products} path={'/'} type={'table'} />
         </Table>
       </section>
     </section>

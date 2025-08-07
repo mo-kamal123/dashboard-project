@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../store/user/user-slice';
 import { useNavigate } from 'react-router';
@@ -7,7 +7,6 @@ const EditProfile = () => {
   const userData = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   // State to hold editable fields
   const [formValues, setFormValues] = useState({
