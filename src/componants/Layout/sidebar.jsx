@@ -50,7 +50,7 @@ const Sidebar = () => {
           <span className="text-2xl">
             <RiDashboardHorizontalFill />
           </span>
-          <span>Dashboard</span>
+          <span>DashMart</span>
         </Link>
 
         <div className="flex flex-col justify-between h-full">

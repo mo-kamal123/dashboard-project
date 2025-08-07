@@ -1,6 +1,8 @@
 import Breadcrumbs from '../componants/Layout/Breadcrumbs';
 import Table from '../componants/UI/table';
 import Modal from '../componants/UI/modal';
+import useSearch from '../hooks/useSearch';
+import { useState } from 'react';
 
 // products data to be displayed in the table
 const products = [
@@ -40,6 +42,28 @@ const ordersHeaders = ['Order ID', 'Customer', 'Total', 'Status'];
 
 // this is the main tables page that displays various tables
 const Tables = () => {
+  const [search, setSearch] = useState('');
+  const [searchOrders, setSearchOrders] = useState('');
+  
+  // Get filtered products
+  const searchResult = useSearch(products, search);
+  const filteredProducts = searchResult?.filteredProducts || products;
+  
+  // Get filtered orders (if you want to add search to orders table too)
+  const ordersSearchResult = useSearch(orders, searchOrders, 'order'); // Pass field type for orders
+  const filteredOrders = ordersSearchResult?.filteredProducts || orders;
+
+  console.log('Filtered Products:', filteredProducts);
+  console.log('Search term:', search);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleOrdersSearch = (e) => {
+    setSearchOrders(e.target.value);
+  };
+
   return (
     <section className="w-full">
       {/* Breadcrumbs for navigation */}
@@ -52,24 +76,40 @@ const Tables = () => {
         aria-label="Products Table"
         className="bg-white rounded-2xl overflow-hidden mt-5"
       >
-        <header className="bg-main py-5 px-3 text-center">
+        <header className="bg-main py-5 px-3 flex justify-between items-center">
           <h2 className="text-2xl text-white font-semibold">
-            Top Products Table
+            Top Products Table ({filteredProducts.length})
           </h2>
+          <input 
+            onChange={handleSearch} 
+            type="text" 
+            name="search" 
+            id="search" 
+            className='bg-white py-1 px-3 rounded' 
+            placeholder='Search products...'
+            value={search}
+          />
         </header>
         <Table tableHeaders={productsHeaders}>
-          {products.map((item, index) => (
-            <tr
-              key={index}
-              className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
-            >
-              <td className="p-3">{item.product}</td>
-              <td className="p-3">{item.category}</td>
-              <td className="p-3">{item.price}</td>
-              <td className="p-3">{item.stock}</td>
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((item, index) => (
+              <tr
+                key={`product-${index}`} // Better key
+                className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
+              >
+                <td className="p-3">{item.product}</td>
+                <td className="p-3">{item.category}</td>
+                <td className="p-3">{item.price}</td>
+                <td className="p-3">{item.stock}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={productsHeaders.length} className="p-3 text-center text-gray-500">
+                No products found matching "{search}"
+              </td>
             </tr>
-          ))}
-          <Modal data={products} path={'/tables'} type={'table'} />
+          )}
         </Table>
       </section>
 
@@ -78,41 +118,58 @@ const Tables = () => {
         aria-label="Orders Table"
         className="bg-white rounded-2xl overflow-hidden mt-5"
       >
-        <header className="bg-main py-5 px-3 text-center">
+        <header className="bg-main py-5 px-3 flex justify-between items-center">
           <h2 className="text-2xl text-white font-semibold">
-            Recent Orders Table
+            Recent Orders Table ({filteredOrders.length})
           </h2>
+          <input 
+            onChange={handleOrdersSearch} 
+            type="text" 
+            name="searchOrders" 
+            id="searchOrders" 
+            className='bg-white py-1 px-3 rounded' 
+            placeholder='Search orders...'
+            value={searchOrders}
+          />
         </header>
         <Table tableHeaders={ordersHeaders}>
-          {orders.map((item, index) => (
-            <tr
-              // onClick={() => navigate(`${item.order}`)}
-              key={index}
-              className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
-            >
-              <td className="p-3">{item.order}</td>
-              <td className="p-3">{item.customer}</td>
-              <td className="p-3">{item.total}</td>
-              <td className="p-3">
-                <span
-                  className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                    item.status === 'Completed'
-                      ? 'bg-green-100 text-green-800'
-                      : item.status === 'Pending'
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : item.status === 'Shipped'
-                          ? 'bg-blue-100 text-blue-800'
-                          : item.status === 'Processing'
-                            ? 'bg-purple-100 text-purple-800'
-                            : 'bg-red-100 text-red-800'
-                  }`}
-                >
-                  {item.status}
-                </span>
+          {filteredOrders.length > 0 ? (
+            filteredOrders.map((item, index) => (
+              <tr
+                key={`order-${index}`} // Better key
+                className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
+              >
+                <td className="p-3">{item.order}</td>
+                <td className="p-3">{item.customer}</td>
+                <td className="p-3">{item.total}</td>
+                <td className="p-3">
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                      item.status === 'Completed'
+                        ? 'bg-green-100 text-green-800'
+                        : item.status === 'Pending'
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : item.status === 'Shipped'
+                            ? 'bg-blue-100 text-blue-800'
+                            : item.status === 'Processing'
+                              ? 'bg-purple-100 text-purple-800'
+                              : 'bg-red-100 text-red-800'
+                    }`}
+                  >
+                    {item.status}
+                  </span>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={ordersHeaders.length} className="p-3 text-center text-gray-500">
+                No orders found matching "{searchOrders}"
               </td>
             </tr>
-          ))}
-          <Modal data={orders} path={'/tables'} type={'table'} />
+          )}
+          {/* Pass filtered data to Modal */}
+          <Modal data={filteredOrders} path={'/tables'} type={'table'} />
         </Table>
       </section>
     </section>
