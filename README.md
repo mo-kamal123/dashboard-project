@@ -9,36 +9,61 @@ DashMart is a sleek and modern eCommerce dashboard built with **React 19**, **Re
 ## 🚀 Live Demo
 
 Deployed with **Vercel**  
-🔗 [https://dashmart.vercel.app]  ()
+🔗 [https://dashmartMo.vercel.app]
 
 ---
 
 ## 📁 Project Structure
 
 project-root/
+
+
 ├── node_modules/
+
 ├── public/
+
 ├── src/
+
 │ ├── assets/ # Static assets (images, icons, etc.)
+
 │ ├── componants/ # Reusable components
+
 │ │ ├── auth/ # Login / Forget Password / Verify / Reset Password
+
 │ │ ├── Layout/ # Header, Sidebar, etc.
+
 │ │ ├── UI/ # Buttons, Modals, Inputs, etc.
+
 │ │ └── hooks/ # Custom React hooks
+
 │ ├── layouts/ # Layout wrappers (e.g. AuthLayout, RootLayout)
+
 │ ├── pages/ # Page views (Dashboard, Tables, Notifications)
+
 │ ├── routes/ # Routing configuration with protected routes
+
 │ ├── store/ # Redux Toolkit store and slices
+
 │ ├── utils/ # Helper functions
+
 │ ├── App.css
+
 │ ├── App.jsx
+
 │ ├── index.css
+
 │ └── main.jsx
+
 ├── .gitignore
+
 ├── .prettierrc
+
 ├── eslint.config.js
+
 ├── index.html
+
 ├── package-lock.json
+
 └── package.json
 
 ---
@@ -53,7 +78,7 @@ project-root/
 - Protected Routes using `React Router`
 
 ### ✅ Dashboard UI
-- Sidebar + Topbar Layout
+- Sidebar Layout
 - Pages: Home / Tables / Notifications
 - Clean and responsive design
 
@@ -62,7 +87,7 @@ project-root/
 - Modal popup for row actions (edit/view)
 - Status tags (In Stock / Out of Stock)
 - Responsive and styled with Tailwind
-- **⚠️ No Sorting Yet** (Filtering only)
+
 
 ### ✅ Code Quality
 - ESLint for consistent coding standards
@@ -88,11 +113,20 @@ project-root/
 ```bash
 git clone https://github.com/your-username/dashmart.git
 cd dashmart
-Install dependencies
+```
+
+2. **Install dependencies**
+```bash
 npm install
-Start the development server
+```
+
+3. **Start the development server**
+```bash
 npm run dev
-Build for production
+```
+
+4. **Build for production**
+```bash
 npm run build
 ```
 
