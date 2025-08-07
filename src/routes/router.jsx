@@ -36,6 +36,7 @@ export const router = createBrowserRouter([
       { path: 'invoices', element: <Invoices /> },
       { path: 'notifications', element: <Notification /> },
       { path: 'profile', element: <Profile /> },
+      { path: 'profile/edit-profile', element: <Profile /> },
     ],
   },
 ]);

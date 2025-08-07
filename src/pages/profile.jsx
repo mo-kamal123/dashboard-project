@@ -1,31 +1,30 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Modal from '../componants/UI/modal';
+import { Link } from 'react-router';
 
-// This is a mock user data object representing a user's profile information
-const userData = {
-  name: 'momo',
-  email: 'moo@example.com',
-  role: 'Owner',
-  phone: '+20 123 456 789',
-  location: 'Cairo, Egypt',
-  joined: 'March 2025',
-  avatar:
-    'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?q=80&w=756&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Placeholder Avatar
-};
 
 // This component renders a user profile page with user details and an edit button
 const Profile = () => {
-  const [user] = useState(userData);
+  const [openModal, setOpenModal] = useState(false);
 
+  // Get the user data from the Redux store
+  const user = useSelector((state) => state.user.user);
+
+  const handleModal = () => {
+    setOpenModal(!openModal);
+  }
   return (
     <main className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
       {/* Page Header */}
       <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Profile</h1>
-        <button className="bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition">
+        <Link to={'/profile/edit-profile'} onClick={handleModal} className="bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition">
           Edit Profile
-        </button>
+        </Link>
       </header>
-
+      {/* form modal */}
+        <Modal type={'form'} openModal={openModal} path={'/profile'} />
       {/* Profile Card */}
       <section
         aria-label="Profile Summary"

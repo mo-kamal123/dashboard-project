@@ -1,15 +1,23 @@
-// This component is used to create a card for authentication purposes, such as login or forget-pass or reset-pass.
 const AuthCard = ({ children, title, handleSubmit }) => {
   return (
-    <div className="flex flex-col items-center justify-between gap-5 p-5 h-full w-full rounded-2xl bg-white">
-      <div className="bg-main w-full py-10 text-center text-3xl font-bold rounded-2xl text-white ">
-        <h1>{title}</h1>
+    <section className="flex items-center justify-center w-full">
+      <div className="flex flex-col items-center gap-5 w-full max-w-md sm:w-full md:max-w-xl p-6 sm:p-8 md:p-10 rounded-2xl bg-white shadow-xl">
+        
+        {/* Header */}
+        <header className="bg-main w-full py-4 sm:py-6 text-center rounded-2xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{title}</h1>
+        </header>
+
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col w-full gap-4 sm:gap-5"
+          aria-label={`${title} form`}
+        >
+          {children}
+        </form>
       </div>
-      {/* Form for authentication */}
-      <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col w-full">
-        {children}
-      </form>
-    </div>
+    </section>
   );
 };
 

@@ -165,7 +165,7 @@ const Dashboard = () => {
               <td className="p-3">{item.stock}</td>
             </tr>
           ))}
-          <Modal data={products} path={'/'} />
+          <Modal data={products} path={'/'} type={'table'} />
         </Table>
       </section>
     </section>
