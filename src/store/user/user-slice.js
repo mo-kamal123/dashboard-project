@@ -1,16 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../../utils/change-localStorage';
+import {
+  addToLocalStorage,
+  getFromLocalStorage,
+  removeFromLocalStorage,
+} from '../../utils/change-localStorage';
 
 const user = getFromLocalStorage('user') || {
-    name: 'momo',
-    email: 'moo@example.com',
-    role: 'Owner',
-    phone: '+20 123 456 789',
-    location: 'Cairo, Egypt',
-    joined: 'March 2025',
-    avatar:
-      'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?q=80&w=756&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Placeholder Avatar
-  }
+  name: 'momo',
+  email: 'moo@example.com',
+  role: 'Owner',
+  phone: '+20 123 456 789',
+  location: 'Cairo, Egypt',
+  joined: 'March 2025',
+  avatar:
+    'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?q=80&w=756&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Placeholder Avatar
+};
 
 // initialState defines the initial state of the user slice.
 const initialState = {

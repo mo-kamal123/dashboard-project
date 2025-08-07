@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../../utils/change-localStorage';
+import {
+  addToLocalStorage,
+  getFromLocalStorage,
+  removeFromLocalStorage,
+} from '../../utils/change-localStorage';
 
 // This const imports necessary functions for check auth from local storage
 const logged = getFromLocalStorage('logged') || false;
@@ -7,7 +11,6 @@ const logged = getFromLocalStorage('logged') || false;
 // This file defines a Redux slice for managing user login state.
 const initialState = { logged };
 console.log(initialState);
-
 
 const loginSlice = createSlice({
   initialState,

@@ -12,6 +12,7 @@ import Dashboard from '../pages/dashboard';
 import Invoices from '../pages/invoices';
 import Profile from '../pages/profile';
 import EditProfile from '../pages/edit-profile';
+import Products from '../pages/products';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,8 @@ export const router = createBrowserRouter([
       { path: ':product', element: <Dashboard /> },
       { path: 'tables', element: <Tables /> },
       { path: 'tables/:product', element: <Tables /> },
+      { path: 'products', element: <Products /> },
+      { path: 'products/:id', element: <Products /> },
       { path: 'invoices', element: <Invoices /> },
       { path: 'notifications', element: <Notification /> },
       { path: 'profile', element: <Profile /> },
