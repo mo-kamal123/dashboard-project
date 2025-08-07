@@ -11,6 +11,7 @@ import Notification from '../pages/notification';
 import Dashboard from '../pages/dashboard';
 import Invoices from '../pages/invoices';
 import Profile from '../pages/profile';
+import EditProfile from '../pages/edit-profile';
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
       { path: 'invoices', element: <Invoices /> },
       { path: 'notifications', element: <Notification /> },
       { path: 'profile', element: <Profile /> },
-      { path: 'profile/edit-profile', element: <Profile /> },
+      { path: 'profile/edit-profile', element: <EditProfile /> },
     ],
   },
 ]);

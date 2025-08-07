@@ -1,30 +1,46 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../componants/UI/modal';
-import { Link } from 'react-router';
-
+import { Link, useNavigate } from 'react-router';
+import { clearUser } from '../store/user/user-slice';
+import { logout } from '../store/auth/login-slice';
 
 // This component renders a user profile page with user details and an edit button
 const Profile = () => {
-  const [openModal, setOpenModal] = useState(false);
-
   // Get the user data from the Redux store
   const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleModal = () => {
-    setOpenModal(!openModal);
-  }
+  // Function to handle user logout
+  const handleLogout = () => {
+    // Clear user data from the Redux store and local storage and navigate to the auth page
+    dispatch(clearUser());
+    dispatch(logout());
+    navigate('/auth');
+  };
   return (
     <main className="max-w-4xl mx-auto p-6 bg-gray-50 min-h-screen">
       {/* Page Header */}
       <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Profile</h1>
-        <Link to={'/profile/edit-profile'} onClick={handleModal} className="bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition">
-          Edit Profile
-        </Link>
+        {/* // Edit and Logout Buttons */}
+        <div className='flex gap-5'>
+          <Link
+            to={'/profile/edit-profile'}
+            className="bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition"
+          >
+            Edit Profile
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition"
+          >
+            Logout
+          </button>
+        </div>
       </header>
-      {/* form modal */}
-        <Modal type={'form'} openModal={openModal} path={'/profile'} />
+
       {/* Profile Card */}
       <section
         aria-label="Profile Summary"
