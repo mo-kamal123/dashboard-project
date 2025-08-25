@@ -124,6 +124,7 @@ const productsSlice = createSlice({
   },
 });
 
-export const { addProduct, removeProduct, updateProduct } = productsSlice.actions;
+export const { addProduct, removeProduct, updateProduct } =
+  productsSlice.actions;
 
 export default productsSlice.reducer;

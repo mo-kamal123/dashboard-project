@@ -1,55 +1,31 @@
-import { MdDeleteForever } from 'react-icons/md';
-import Breadcrumbs from '../componants/Layout/Breadcrumbs';
-import Modal from '../componants/UI/modal';
-import Table from '../componants/UI/table';
-import { FiEdit3 } from 'react-icons/fi';
-import { useNavigate } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeProduct } from '../store/products/products-slice';
-import { useState } from 'react';
-import useSearch from '../hooks/useSearch';
+import { useSelector } from 'react-redux';
+import Breadcrumbs from '../components/Layout/breadcrumbs';
+import Modal from '../components/UI/modal';
+import Table from '../components/UI/table';
+import Input from '../components/UI/input';
+import ActionBtns from '../components/UI/action-Btns';
+import PaginationActions from '../components/UI/pagination-actions';
+import useTableLogic from '../hooks/useTableLogic';
 
 const productsHeaders = ['Product', 'Category', 'Price', 'Stock', 'actions'];
 
 const Products = () => {
-  const [openModal, setOpenModal] = useState(false); // State to control modal visibility
-  const [selectedProduct, setSelectedProduct] = useState(null); // State to hold the product being edited
-  const [search, setSearch] = useState(''); // State for search input
   const mainProducts = useSelector((state) => state.products.products); // Fetch products from Redux store
-  const { filteredProducts } = useSearch(mainProducts, search); // Custom hook to filter products based on search input
-  const products = filteredProducts || mainProducts; // Use filtered products or fallback to main products
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const {
+    handleCloseModal,
+    handleDelete,
+    handleEdit,
+    handleSearch,
+    openModal,
+    search,
+    selectedProduct,
+    paginatedData,
+    currentPage,
+    totalPages,
+    goToNextPage,
+    goToPrevPage,
+  } = useTableLogic(mainProducts);
 
-  // handle delete confirmation and dispatch action to remove product
-  const handleDelete = (product) => {
-    const confirmDelete = window.confirm(
-      `Are you sure you want to delete ${product.product}?`
-    );
-    if (confirmDelete) {
-      dispatch(removeProduct(product));
-    }
-  };
-
-  // handle edit action, navigate to product edit page and open modal
-  const handleEdit = (item) => {
-    navigate(`/products/${item.id}`);
-    setSelectedProduct(item);
-    setOpenModal(true);
-  };
-
-  // close modal and reset selected product
-  const handleCloseModal = () => {
-    setOpenModal(false);
-    setSelectedProduct(null);
-    // Navigate back to products list when modal closes
-    navigate('/products');
-  };
-
-  // Function to handle search input changes
-  const handleSearch = (e) => {
-    setSearch(e.target.value); // Update search state with input value
-  };
   return (
     <section className="w-full">
       {/* Breadcrumbs for navigation */}
@@ -64,9 +40,9 @@ const Products = () => {
         {/* Header for the products table */}
         <header className="bg-main py-5 px-3 flex justify-between items-center">
           <h2 className="text-2xl text-white font-semibold">
-            Top Products Table ({products.length})
+            Top Products Table ({mainProducts.length})
           </h2>
-          <input
+          <Input
             onChange={handleSearch}
             type="text"
             name="search"
@@ -78,8 +54,8 @@ const Products = () => {
         </header>
         {/* Render the products table with headers and data */}
         <Table tableHeaders={productsHeaders}>
-          {products.length > 0 ? (
-            products.map((item, index) => (
+          {paginatedData.length > 0 ? (
+            paginatedData.map((item, index) => (
               <tr
                 key={index}
                 className="text-gray-500 font-light text-base hover:bg-gray-100 transition-colors duration-300"
@@ -90,18 +66,11 @@ const Products = () => {
                 <td className="p-3">{item.stock}</td>
                 {/* Action buttons for delete and edit */}
                 <td>
-                  <button
-                    onClick={() => handleDelete(item)}
-                    className="text-xl text-white p-2 bg-red-500 hover:bg-red-600 ml-2 rounded-lg"
-                  >
-                    <MdDeleteForever />
-                  </button>
-                  <button
-                    onClick={() => handleEdit(item)}
-                    className="text-xl text-white p-2 bg-blue-500 hover:bg-blue-600 ml-2 rounded-lg"
-                  >
-                    <FiEdit3 />
-                  </button>
+                  <ActionBtns
+                    handleDelete={handleDelete}
+                    handleEdit={handleEdit}
+                    item={item}
+                  />
                 </td>
               </tr>
             ))
@@ -117,6 +86,15 @@ const Products = () => {
           )}
         </Table>
       </section>
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <PaginationActions
+          currentPage={currentPage}
+          totalPages={totalPages}
+          goToNextPage={goToNextPage}
+          goToPrevPage={goToPrevPage}
+        />
+      )}
       {/* Modal */}
       {openModal && selectedProduct && (
         <Modal

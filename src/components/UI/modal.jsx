@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateProduct } from '../../store/products/products-slice';
+import Input from './input';
 
 const Modal = ({ data, openModal, handleOpenModal }) => {
   const dispatch = useDispatch();
@@ -34,11 +35,10 @@ const Modal = ({ data, openModal, handleOpenModal }) => {
   }, [openModal]);
 
   // Function to handle input changes in the form
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (key, value) => {
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [key]: value,
     }));
   };
 
@@ -62,35 +62,34 @@ const Modal = ({ data, openModal, handleOpenModal }) => {
         <h2 className="text-2xl font-bold mb-4">Edit Product</h2>
         {/* Form for editing product details */}
         <form onSubmit={handleSubmit} className="space-y-3">
-          <input
+          <Input
             name="product"
-            value={formData.product || ''}
+            value={formData.product}
             onChange={handleChange}
-            className="w-full border px-3 py-1 rounded"
             placeholder="Product Name"
             required
           />
-          <input
+
+          <Input
             name="category"
             value={formData.category || ''}
             onChange={handleChange}
-            className="w-full border px-3 py-1 rounded"
             placeholder="Category"
             required
           />
-          <input
+
+          <Input
             name="price"
             value={formData.price || ''}
             onChange={handleChange}
-            className="w-full border px-3 py-1 rounded"
             placeholder="Price"
             required
           />
-          <input
+
+          <Input
             name="stock"
             value={formData.stock || ''}
             onChange={handleChange}
-            className="w-full border px-3 py-1 rounded"
             placeholder="Stock"
             required
           />
