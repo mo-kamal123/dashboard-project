@@ -3,6 +3,8 @@ import Table from '../components/UI/table';
 import Modal from '../components/UI/modal';
 import useSearch from '../hooks/useSearch';
 import { useState } from 'react';
+import { searchStrategies } from '../utils/table_filter';
+import ItemStatus from '../components/UI/item-status';
 
 // products data to be displayed in the table
 const products = [
@@ -37,6 +39,7 @@ const orders = [
   },
 ];
 
+// headers for both tables
 const productsHeaders = ['Product', 'Category', 'Price', 'Stock'];
 const ordersHeaders = ['Order ID', 'Customer', 'Total', 'Status'];
 
@@ -46,20 +49,25 @@ const Tables = () => {
   const [searchOrders, setSearchOrders] = useState('');
 
   // Get filtered products
-  const searchResult = useSearch(products, search);
-  const filteredProducts = searchResult?.filteredProducts || products;
+  const filteredProducts = useSearch(
+    products,
+    search,
+    searchStrategies.products
+  );
 
   // Get filtered orders (if you want to add search to orders table too)
-  const ordersSearchResult = useSearch(orders, searchOrders, 'order'); // Pass field type for orders
-  const filteredOrders = ordersSearchResult?.filteredProducts || orders;
+  const filteredOrders = useSearch(
+    orders,
+    searchOrders,
+    searchStrategies.orders
+  ); // Pass field type for orders
 
-  console.log('Filtered Products:', filteredProducts);
-  console.log('Search term:', search);
-
+  // Handle search for products table
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
 
+  // Handle search for orders table
   const handleOrdersSearch = (e) => {
     setSearchOrders(e.target.value);
   };
@@ -146,21 +154,7 @@ const Tables = () => {
                 <td className="p-3">{item.customer}</td>
                 <td className="p-3">{item.total}</td>
                 <td className="p-3">
-                  <span
-                    className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                      item.status === 'Completed'
-                        ? 'bg-green-100 text-green-800'
-                        : item.status === 'Pending'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : item.status === 'Shipped'
-                            ? 'bg-blue-100 text-blue-800'
-                            : item.status === 'Processing'
-                              ? 'bg-purple-100 text-purple-800'
-                              : 'bg-red-100 text-red-800'
-                    }`}
-                  >
-                    {item.status}
-                  </span>
+                  <ItemStatus status={item.status} />
                 </td>
               </tr>
             ))

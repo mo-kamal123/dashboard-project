@@ -1,11 +1,13 @@
-const Input = ({ type, name, placeholder, onChange }) => {
+const Input = ({ onChange, ...props }) => {
+  const classes =
+    props.type === 'email' || props.type === 'password'
+      ? 'border-[1px] border-sec rounded-sm p-2 mb-5'
+      : 'w-full border px-3 py-1 rounded';
   return (
     <input
-      onChange={(e) => onChange(name, e.target.value)}
-      className={`border-[1px] border-sec rounded-sm p-2 mb-5`}
-      type={type}
-      name={name}
-      placeholder={placeholder}
+      className={classes}
+      onChange={(e) => onChange(props.name, e.target.value)}
+      {...props}
     />
   );
 };
