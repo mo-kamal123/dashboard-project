@@ -38,6 +38,7 @@ const ForgetPassword = () => {
         name={'email'}
         type={'email'}
         placeholder={'Email'}
+        variant="auth"
         onChange={handleChange}
       />
       <Btn>send code</Btn>

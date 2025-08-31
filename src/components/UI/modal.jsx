@@ -35,11 +35,8 @@ const Modal = ({ data, openModal, handleOpenModal }) => {
   }, [openModal]);
 
   // Function to handle input changes in the form
-  const handleChange = (key, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
+  const handleChange = (name, value) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   // Function to handle form submission
@@ -65,7 +62,7 @@ const Modal = ({ data, openModal, handleOpenModal }) => {
           <Input
             name="product"
             value={formData.product}
-            onChange={handleChange}
+            onChange={(e) => handleChange('product', e.target.value)}
             placeholder="Product Name"
             required
           />
@@ -73,7 +70,7 @@ const Modal = ({ data, openModal, handleOpenModal }) => {
           <Input
             name="category"
             value={formData.category || ''}
-            onChange={handleChange}
+            onChange={(e) => handleChange('category', e.target.value)}
             placeholder="Category"
             required
           />
@@ -81,7 +78,7 @@ const Modal = ({ data, openModal, handleOpenModal }) => {
           <Input
             name="price"
             value={formData.price || ''}
-            onChange={handleChange}
+            onChange={(e) => handleChange('price', e.target.value)}
             placeholder="Price"
             required
           />
@@ -89,14 +86,14 @@ const Modal = ({ data, openModal, handleOpenModal }) => {
           <Input
             name="stock"
             value={formData.stock || ''}
-            onChange={handleChange}
+            onChange={(e) => handleChange('stock', e.target.value)}
             placeholder="Stock"
             required
           />
           <textarea
             name="description"
             value={formData.description || ''}
-            onChange={handleChange}
+            onChange={(e) => handleChange('description', e.target.value)}
             className="w-full border px-3 py-1 rounded resize-none"
             placeholder="Description"
             rows="3"

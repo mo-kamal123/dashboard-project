@@ -40,14 +40,16 @@ const Login = () => {
       <Input
         name={'email'}
         type={'email'}
+        variant="auth"
         placeholder={'Email'}
-        onChange={handleChange}
+        onChange={(e) => handleChange('email', e.target.value)}
       />
       <Input
         name={'password'}
         type={'password'}
+        variant="auth"
         placeholder={'Password'}
-        onChange={handleChange}
+        onChange={(e) => handleChange('password', e.target.value)}
       />
       <Link to="forget-password">ForgetPassword?</Link>
       <Btn>submit</Btn>

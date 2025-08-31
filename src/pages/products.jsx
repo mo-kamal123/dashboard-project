@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { FiEdit3 } from 'react-icons/fi';
+import { MdDeleteForever } from 'react-icons/md';
 import Breadcrumbs from '../components/Layout/breadcrumbs';
 import Modal from '../components/UI/modal';
 import Table from '../components/UI/table';
@@ -6,11 +7,13 @@ import Input from '../components/UI/input';
 import ActionBtns from '../components/UI/action-Btns';
 import PaginationActions from '../components/UI/pagination-actions';
 import useTableLogic from '../hooks/useTableLogic';
+import Btn from '../components/UI/Btn';
+import useProducts from '../hooks/useProducts';
 
 const productsHeaders = ['Product', 'Category', 'Price', 'Stock', 'actions'];
 
 const Products = () => {
-  const mainProducts = useSelector((state) => state.products.products); // Fetch products from Redux store
+  const mainProducts = useProducts();
   const {
     handleCloseModal,
     handleDelete,
@@ -43,11 +46,10 @@ const Products = () => {
             Top Products Table ({mainProducts.length})
           </h2>
           <Input
-            onChange={handleSearch}
+            onChange={(e) => handleSearch(_, e.target.value)}
             type="text"
             name="search"
             id="search"
-            className="bg-white py-1 px-3 rounded"
             placeholder="Search products..."
             value={search}
           />
@@ -66,11 +68,14 @@ const Products = () => {
                 <td className="p-3">{item.stock}</td>
                 {/* Action buttons for delete and edit */}
                 <td>
-                  <ActionBtns
-                    handleDelete={handleDelete}
-                    handleEdit={handleEdit}
-                    item={item}
-                  />
+                  <ActionBtns>
+                    <Btn variant="delete" onClick={() => handleDelete(item)}>
+                      <MdDeleteForever />
+                    </Btn>
+                    <Btn variant="edit" onClick={() => handleEdit(item)}>
+                      <FiEdit3 />
+                    </Btn>
+                  </ActionBtns>
                 </td>
               </tr>
             ))

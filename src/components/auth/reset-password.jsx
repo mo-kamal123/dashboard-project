@@ -46,12 +46,14 @@ const ResetPassword = () => {
       <Input
         name={'newPass'}
         type={'password'}
+        variant="auth"
         placeholder={'password'}
         onChange={handleChange}
       />
       <Input
         name={'newPass_confirmation'}
         type={'password'}
+        variant="auth"
         placeholder={'Password confirmation'}
         onChange={handleChange}
       />

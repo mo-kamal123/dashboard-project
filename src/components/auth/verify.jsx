@@ -35,6 +35,7 @@ const Verify = () => {
       <Input
         name={'code'}
         type={'text'}
+        variant="auth"
         placeholder={'code'}
         onChange={handleChange}
       />

@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUser } from '../store/user/user-slice';
 import { useNavigate } from 'react-router';
+import useUser from '../hooks/useUser';
+import Btn from '../components/UI/Btn';
 
 const EditProfile = () => {
-  const userData = useSelector((state) => state.user.user);
+  const userData = useUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -57,12 +59,7 @@ const EditProfile = () => {
           </div>
         ))}
 
-        <button
-          type="submit"
-          className="w-full bg-main text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300"
-        >
-          Save Changes
-        </button>
+        <Btn type="submit">Save Changes</Btn>
       </form>
     </section>
   );

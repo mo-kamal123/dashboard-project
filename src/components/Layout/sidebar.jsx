@@ -8,21 +8,10 @@ import { RiBillLine, RiDashboardHorizontalFill } from 'react-icons/ri';
 import { CgProfile } from 'react-icons/cg';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { FaCartArrowDown, FaTableCells } from 'react-icons/fa6';
+import { sidebarLinks } from '../../constants/sidebar';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navUrl = [
-    { title: 'Dashboard', url: '/', icon: <MdOutlineSpaceDashboard /> },
-    { title: 'Tables', url: '/tables', icon: <FaTableCells /> },
-    { title: 'Products', url: '/products', icon: <FaCartArrowDown /> },
-    { title: 'Invoices', url: '/invoices', icon: <RiBillLine /> },
-    {
-      title: 'Notifications',
-      url: '/notifications',
-      icon: <MdOutlineCircleNotifications />,
-    },
-  ];
 
   return (
     <>
@@ -56,7 +45,7 @@ const Sidebar = () => {
           {/* Navigation Links */}
           <nav className="flex-1 overflow-y-auto">
             <ul className="w-[90%] mx-auto mt-4 space-y-2">
-              {navUrl.map((nav) => (
+              {sidebarLinks.map((nav) => (
                 <li key={nav.url}>
                   <NavLink
                     to={nav.url}
@@ -69,7 +58,9 @@ const Sidebar = () => {
                     }
                     onClick={() => setIsOpen(false)} // Close sidebar on mobile click
                   >
-                    <span className="text-lg">{nav.icon}</span>
+                    <span className="text-lg">
+                      <nav.icon />
+                    </span>
                     <span>{nav.title}</span>
                   </NavLink>
                 </li>
